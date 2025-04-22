@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+crud-springboot,com.mtraore.crudspringboot.controller,PersonController,0,98,0,6,0,18,0,9,0,6
+crud-springboot,com.mtraore.crudspringboot.service,PersonService,0,29,0,0,0,6,0,5,0,5
+crud-springboot,com.mtraore.crudspringboot,CrudSpringbootApplication,0,8,0,0,0,3,0,2,0,2

@@ -1,0 +1,5 @@
+com/mtraore/crudspringboot/repository/PersonRepository.class
+com/mtraore/crudspringboot/controller/PersonController.class
+com/mtraore/crudspringboot/service/PersonService.class
+com/mtraore/crudspringboot/entity/Person.class
+com/mtraore/crudspringboot/CrudSpringbootApplication.class

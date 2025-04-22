@@ -1,0 +1,4 @@
+com/mtraore/crudspringboot/service/PersonServiceTest.class
+com/mtraore/crudspringboot/CrudSpringbootApplicationTests.class
+com/mtraore/crudspringboot/repository/PersonRepositoryTest.class
+com/mtraore/crudspringboot/controller/PersonControllerTest.class
