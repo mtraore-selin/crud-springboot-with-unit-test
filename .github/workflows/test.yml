@@ -4,11 +4,25 @@ on:
   push:
     branches:
       - main
-      - develop  # Adjust as needed
+      - develop # Adjust as needed
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: crud_springboot
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=3
 
     steps:
       - name: Checkout repository
@@ -17,8 +31,11 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'  # Adoptium's Temurin JDK
-          java-version: '17'       # Set Java version as needed
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Wait for MySQL to be ready
+        run: sleep 15
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -31,5 +48,12 @@ jobs:
       - name: Run clean with Maven
         run: mvn clean
 
+      - name: Check MySQL connection
+        run: mysql -h 127.0.0.1 -u root -proot -e "SHOW DATABASES;"
+
       - name: Run tests with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1:3306/crud_springboot?serverTimezone=UTC
+          SPRING_DATASOURCE_USERNAME: root
+          SPRING_DATASOURCE_PASSWORD: root
         run: mvn test
